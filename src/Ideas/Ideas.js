@@ -4,7 +4,7 @@ import './Ideas.css';
 
 const Ideas = ({ ideas, removeIdea }) => {
 const ideaCards = ideas.map(idea => {
-    return <Card 
+    return <Card
       id={idea.id}
       title={idea.title}
       description={idea.description}
@@ -15,9 +15,9 @@ const ideaCards = ideas.map(idea => {
 
   return (
     <>
-      <h2>Ideas Component</h2>
+      <h2>Shout Outs</h2>
       <section className='ideas'>
-        {ideaCards}
+        {!ideas.length ? (<h3>You Currntly Have Shout Outs</h3>) : ideaCards}
       </section>
     </>
   )

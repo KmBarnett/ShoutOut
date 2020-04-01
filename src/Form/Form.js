@@ -23,9 +23,10 @@ export default class Form extends Component {
   }
 
   resetInputs = () => {
-    this.setState({ 
+    this.setState({
       title: '',
-      description: ''
+      description: '',
+      password: ''
     })
   }
 
@@ -34,22 +35,29 @@ export default class Form extends Component {
       <form>
         <input
           type='text'
-          placeholder='title'
+          placeholder='Person'
           value={this.state.title}
           name='title'
           onChange={this.handleChange}
         />
         <input
           type='text'
-          placeholder='description'
+          placeholder='How They Are Awesome'
           value={this.state.description}
           name='description'
           onChange={this.handleChange}
         />
-        <button 
+        <input
+          type='text'
+          placeholder='password'
+          value={this.state.password}
+          name='password'
+          onChange={this.handleChange}
+        />
+        <button
           onClick={this.submitNewIdea}
         >
-          Submit!
+          Shout!
         </button>
       </form>
     )
