@@ -19,9 +19,13 @@ export const APIPost = async (idea) => {
   return newIdea
 }
 
-export const APIDelete = async (id) => {
+export const APIDelete = async (id, adminPassword) => {
   let options = {
-    method: 'Delete',
+    method: 'DELETE',
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({password: adminPassword})
   }
   const newIdea = await fetch(`https://shout-out-turing.herokuapp.com/api/v1/ideas/${id}`, options)
   .then(res => res.json())

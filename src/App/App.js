@@ -10,6 +10,7 @@ export default class App extends Component {
   constructor() {
     super();
     this.state = {
+      adminPassword: '',
       ideas: []
     };
   }
@@ -20,14 +21,18 @@ export default class App extends Component {
     this.setState({ideas: [...ideas, ...data]})
   }
 
+  handleChange = e => {
+    this.setState({ [e.target.name]: e.target.value})
+  }
+
   addIdea = async newIdea => {
     const idea = await APIPost(newIdea)
     this.setState({ ideas: [...this.state.ideas, idea]})
   }
 
-  removeIdea = id => {
+  removeIdea = (id) => {
     const ideas = this.state.ideas.filter(idea => idea.id !== id);
-    APIDelete(id)
+    APIDelete(id, this.state.adminPassword)
     this.setState({ ideas });
   }
 
@@ -39,6 +44,14 @@ export default class App extends Component {
         <Ideas
           ideas={this.state.ideas}
           removeIdea={ this.removeIdea}
+        />
+        <input
+          className='admin-pass'
+          type='text'
+          placeholder='adminPassword'
+          value={this.state.adminPassword}
+          name='adminPassword'
+          onChange={this.handleChange}
         />
       </main>
     )
