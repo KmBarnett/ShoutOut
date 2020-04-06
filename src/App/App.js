@@ -10,7 +10,6 @@ export default class App extends Component {
   constructor() {
     super();
     this.state = {
-      adminPassword: '',
       ideas: []
     };
   }
@@ -32,7 +31,7 @@ export default class App extends Component {
 
   removeIdea = (id) => {
     const ideas = this.state.ideas.filter(idea => idea.id !== id);
-    APIDelete(id, this.state.adminPassword)
+    APIDelete(id)
     this.setState({ ideas });
   }
 
@@ -44,14 +43,6 @@ export default class App extends Component {
         <Ideas
           ideas={this.state.ideas}
           removeIdea={ this.removeIdea}
-        />
-        <input
-          className='admin-pass'
-          type='text'
-          placeholder='adminPassword'
-          value={this.state.adminPassword}
-          name='adminPassword'
-          onChange={this.handleChange}
         />
       </main>
     )

@@ -1,4 +1,4 @@
-export const APICall = async (url) => {
+export const APICall = async () => {
   const data = await fetch('https://shout-out-turing.herokuapp.com/api/v1/ideas')
     .then(res => res.json())
     .catch(err => console.error(err.message))
@@ -19,13 +19,12 @@ export const APIPost = async (idea) => {
   return newIdea
 }
 
-export const APIDelete = async (id, adminPassword) => {
+export const APIDelete = async (id) => {
   let options = {
     method: 'DELETE',
     headers: {
       "Content-Type": "application/json"
     },
-    body: JSON.stringify({password: adminPassword})
   }
   const newIdea = await fetch(`https://shout-out-turing.herokuapp.com/api/v1/ideas/${id}`, options)
   .then(res => res.json())
