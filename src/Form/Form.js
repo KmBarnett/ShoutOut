@@ -6,7 +6,8 @@ export default class Form extends Component {
     super();
     this.state = {
       title: '',
-      description: ''
+      description: '',
+      password:''
     }
   }
 
